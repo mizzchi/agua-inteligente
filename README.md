@@ -34,6 +34,13 @@ En esta etapa se están definiendo los componentes, la arquitectura electrónica
 
 ---
 
+## Vista del prototipo web
+
+A continuación se presenta una interfaz demostrativa del proyecto:
+https://mizzchi.github.io/agua-inteligente/
+
+---
+
 ## Tecnologías a Utilizar
 
 - Arduino  
