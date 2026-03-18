@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Agua Inteligente Cali</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#f4f9ff;
+    color:#222;
+}
+
+/* NAVBAR */
+nav{
+    background:white;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+}
+
+nav h2{
+    color:#0077b6;
+    margin:0;
+}
+
+nav a{
+    text-decoration:none;
+    color:#0077b6;
+    font-weight:600;
+}
+
+/* HERO */
+header{
+    background:linear-gradient(135deg,#0077b6,#00b4d8);
+    color:white;
+    text-align:center;
+    padding:90px 20px;
+}
+
+header h1{
+    font-size:3rem;
+    margin:0;
+}
+
+header p{
+    font-size:1.2rem;
+    opacity:.9;
+}
+
+/* SECCIONES */
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+h2{
+    color:#0077b6;
+    margin-bottom:20px;
+}
+
+/* TARJETAS */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:14px;
+    padding:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+/* BOTONES */
+.btn{
+    background:#0096c7;
+    color:white;
+    padding:12px 22px;
+    border-radius:30px;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:15px;
+    font-weight:600;
+}
+
+.btn:hover{
+    background:#023e8a;
+}
+
+/* DASHBOARD */
+.dashboard{
+    background:white;
+    border-radius:16px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.metric{
+    text-align:center;
+}
+
+.metric h3{
+    font-size:2.2rem;
+    color:#00b4d8;
+    margin:10px 0;
+}
+
+/* BARRA SIMULADA */
+.bar{
+    height:18px;
+    background:#e0f2ff;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    width:72%;
+    background:linear-gradient(90deg,#00b4d8,#0077b6);
+}
+
+/* FOOTER */
+footer{
+    background:#0077b6;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2>Agua Inteligente</h2>
+<a href="#dashboard">Monitoreo</a>
+</nav>
+
+<header>
+<h1>Agua Inteligente Cali</h1>
+<p>Purificación automática con asistencia por voz e integración electrónica</p>
+</header>
+
+<section>
+<h2>El Problema</h2>
+<div class="card">
+<p>
+Muchas comunidades enfrentan dificultades relacionadas con la calidad del agua y la falta de sistemas accesibles que combinen tecnología, educación ambiental y automatización.
+</p>
+</div>
+</section>
+
+<section>
+<h2>Nuestra Solución</h2>
+<div class="card">
+<p>
+Un sistema físico basado en Arduino que integra purificación, dispensado automático y asistencia por voz mediante inteligencia artificial, permitiendo interacción directa sin aplicaciones externas.
+</p>
+<a class="btn">Conoce más</a>
+</div>
+</section>
+
+<section id="dashboard">
+<h2>Panel de Monitoreo (Simulación)</h2>
+
+<div class="dashboard">
+<div class="grid">
+
+<div class="metric">
+<p>Nivel de Agua</p>
+<h3>72%</h3>
+<div class="bar"><div class="fill"></div></div>
+</div>
+
+<div class="metric">
+<p>Pureza Detectada</p>
+<h3>98%</h3>
+</div>
+
+<div class="metric">
+<p>Estado del Sistema</p>
+<h3>Activo</h3>
+</div>
+
+</div>
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 Agua Inteligente Cali</p>
+</footer>
+
+</body>
+</html>
