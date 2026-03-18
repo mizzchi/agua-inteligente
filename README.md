@@ -53,3 +53,12 @@ En esta etapa se están definiendo los componentes, la arquitectura electrónica
 5. Pruebas funcionales y validación del sistema.  
 
 ---
+
+## Referencia Visual del Diseño
+
+Durante la etapa de conceptualización se utilizó una herramienta de generación asistida por IA para visualizar una posible interfaz del sistema.
+
+Enlace de referencia visual:
+https://preview.builtwithrocket.new/aguainteligente-s77zx27
+
+Este recurso fue utilizado únicamente como apoyo conceptual para el diseño.
