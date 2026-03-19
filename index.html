@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -10,17 +9,27 @@
 
 <style>
 
+/* ===== BODY ===== */
 body{
     margin:0;
     font-family:'Poppins',sans-serif;
-    background:#f4f9ff;
-    color:#222;
+    background:linear-gradient(135deg,#0b1f33,#102a43,#0b1f33);
+    background-size:400% 400%;
+    animation:fondo 18s ease infinite;
+    color:#e6f1ff;
 }
 
-/* NAVBAR */
+@keyframes fondo{
+   0%{background-position:0% 50%;}
+   50%{background-position:100% 50%;}
+   100%{background-position:0% 50%;}
+}
+
+/* ===== NAVBAR ===== */
 nav{
-    background:white;
-    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    background:rgba(10,25,47,0.7);
+    backdrop-filter:blur(10px);
+    box-shadow:0 2px 10px rgba(0,0,0,0.3);
     padding:15px 40px;
     display:flex;
     justify-content:space-between;
@@ -30,27 +39,55 @@ nav{
 }
 
 nav h2{
-    color:#0077b6;
+    color:#4cc9f0;
     margin:0;
 }
 
 nav a{
     text-decoration:none;
-    color:#0077b6;
+    color:#4cc9f0;
     font-weight:600;
+    transition:.3s;
 }
 
-/* HERO */
+nav a:hover{
+    opacity:.7;
+}
+
+/* ===== HERO ===== */
 header{
     background:linear-gradient(135deg,#0077b6,#00b4d8);
     color:white;
     text-align:center;
     padding:90px 20px;
+    animation:fadeUp 1s ease;
 }
 
 header h1{
     font-size:3rem;
     margin:0;
+    letter-spacing:1px;
+    text-shadow:
+        0 0 10px rgba(0,180,216,.6),
+        0 0 25px rgba(0,180,216,.4);
+    animation:tituloGlow 4s ease-in-out infinite;
+}
+
+@keyframes tituloGlow{
+    0%{
+        transform:translateY(0);
+        text-shadow:0 0 8px rgba(0,180,216,.4);
+    }
+    50%{
+        transform:translateY(-4px);
+        text-shadow:
+            0 0 18px rgba(0,180,216,.9),
+            0 0 35px rgba(0,119,182,.6);
+    }
+    100%{
+        transform:translateY(0);
+        text-shadow:0 0 8px rgba(0,180,216,.4);
+    }
 }
 
 header p{
@@ -58,19 +95,20 @@ header p{
     opacity:.9;
 }
 
-/* SECCIONES */
+/* ===== SECCIONES ===== */
 section{
     max-width:1100px;
     margin:auto;
     padding:60px 20px;
+    animation:fadeUp 1s ease;
 }
 
 h2{
-    color:#0077b6;
+    color:#4cc9f0;
     margin-bottom:20px;
 }
 
-/* TARJETAS */
+/* ===== TARJETAS ===== */
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -78,20 +116,21 @@ h2{
 }
 
 .card{
-    background:white;
+    background:#132f4c;
     border-radius:14px;
     padding:25px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.08);
-    transition:.3s;
+    box-shadow:0 8px 25px rgba(0,0,0,0.3);
+    transition:.35s;
 }
 
 .card:hover{
-    transform:translateY(-6px);
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 15px 35px rgba(0,180,216,0.25);
 }
 
-/* BOTONES */
+/* ===== BOTONES ===== */
 .btn{
-    background:#0096c7;
+    background:linear-gradient(135deg,#00b4d8,#0077b6);
     color:white;
     padding:12px 22px;
     border-radius:30px;
@@ -99,51 +138,62 @@ h2{
     display:inline-block;
     margin-top:15px;
     font-weight:600;
+    transition:.3s;
 }
 
 .btn:hover{
-    background:#023e8a;
+    transform:scale(1.07);
+    box-shadow:0 0 18px rgba(0,180,216,0.6);
 }
 
-/* DASHBOARD */
+/* ===== DASHBOARD ===== */
 .dashboard{
-    background:white;
+    background:#102a43;
     border-radius:16px;
     padding:30px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-}
-
-.metric{
-    text-align:center;
-}
-
-.metric h3{
-    font-size:2.2rem;
-    color:#00b4d8;
-    margin:10px 0;
-}
-
-/* BARRA SIMULADA */
-.bar{
-    height:18px;
-    background:#e0f2ff;
-    border-radius:20px;
+    box-shadow:
+        0 0 25px rgba(0,180,216,0.15),
+        inset 0 0 25px rgba(0,180,216,0.08);
+    position:relative;
     overflow:hidden;
 }
 
-.fill{
-    height:100%;
-    width:72%;
-    background:linear-gradient(90deg,#00b4d8,#0077b6);
+/* línea escáner */
+.dashboard::before{
+    content:"";
+    position:absolute;
+    top:-100%;
+    left:0;
+    width:100%;
+    height:200%;
+    background:linear-gradient(
+        transparent,
+        rgba(0,180,216,0.15),
+        transparent
+    );
+    animation:scan 6s linear infinite;
 }
 
-/* FOOTER */
-footer{
-    background:#0077b6;
-    color:white;
-    text-align:center;
-    padding:25px;
+@keyframes scan{
+    from{transform:translateY(0);}
+    to{transform:translateY(100%);}
+  }
+  .metric h3{
+    font-size:2.2rem;
+    color:#4cc9f0;
+    margin:10px 0;
+    text-shadow:0 0 12px rgba(76,201,240,.6);
+    animation:pulseMetric 3s ease-in-out infinite;
 }
+
+@keyframes pulseMetric{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.08);
+    }
+  }
 
 </style>
 </head>
@@ -200,7 +250,6 @@ Un sistema físico basado en Arduino que integra purificación, dispensado autom
 <p>Estado del Sistema</p>
 <h3>Activo</h3>
 </div>
-
 </div>
 </div>
 
