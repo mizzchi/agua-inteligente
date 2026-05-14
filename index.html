@@ -1,255 +1,566 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Agua Inteligente Cali</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
-
+:root {
+  --blue-deep: #020e1f;
+  --blue-mid: #041628;
+  --blue-card: #071e33;
+  --accent: #00d4ff;
+  --accent2: #0077b6;
+  --accent-soft: rgba(0,212,255,0.12);
+  --text: #e2f3ff;
+  --text-muted: #7eaac7;
+  --border: rgba(0,212,255,0.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background:linear-gradient(135deg,#0b1f33,#102a43,#0b1f33);
-    background-size:400% 400%;
-    animation:fondo 18s ease infinite;
-    color:#e6f1ff;
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--blue-deep);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
 }
-
-@keyframes fondo{
-   0%{background-position:0% 50%;}
-   50%{background-position:100% 50%;}
-   100%{background-position:0% 50%;}
+.bg-particles{
+  position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;
 }
-
+.particle{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,212,255,0.25),transparent);
+  animation:floatP linear infinite;
+}
+@keyframes floatP{
+  0%{transform:translateY(110vh) scale(0);opacity:0}
+  10%{opacity:1}
+  90%{opacity:.4}
+  100%{transform:translateY(-10vh) scale(1.5);opacity:0}
+}
 nav{
-    background:rgba(10,25,47,0.7);
-    backdrop-filter:blur(10px);
-    box-shadow:0 2px 10px rgba(0,0,0,0.3);
-    padding:15px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:sticky;
-    top:0;
+  position:sticky;top:0;z-index:100;
+  background:rgba(2,14,31,0.85);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:14px 48px;
+  display:flex;justify-content:space-between;align-items:center;
 }
-
-nav h2{
-    color:#4cc9f0;
-    margin:0;
+.nav-logo{
+  font-family:'Syne',sans-serif;
+  font-size:1.2rem;font-weight:800;
+  color:var(--accent);
+  display:flex;align-items:center;gap:10px;
 }
-
-nav a{
-    text-decoration:none;
-    color:#4cc9f0;
-    font-weight:600;
-    transition:.3s;
+.nav-logo span{
+  display:inline-block;width:10px;height:10px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 12px var(--accent);
+  animation:blink 2s ease-in-out infinite;
 }
-
-nav a:hover{
-    opacity:.7;
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.nav-links{display:flex;gap:28px}
+.nav-links a{
+  text-decoration:none;color:var(--text-muted);
+  font-size:.9rem;font-weight:500;
+  transition:.2s;
 }
-
+.nav-links a:hover{color:var(--accent)}
 header{
-    background:linear-gradient(135deg,#0077b6,#00b4d8);
-    color:white;
-    text-align:center;
-    padding:90px 20px;
-    animation:fadeUp 1s ease;
+  position:relative;z-index:1;
+  min-height:92vh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;
+  padding:80px 24px 60px;
+  overflow:hidden;
 }
-
+.hero-glow{
+  position:absolute;
+  width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,119,182,0.25) 0%,transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  animation:pulse 6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.12)}}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent-soft);
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:6px 18px;
+  font-size:.8rem;font-weight:500;
+  color:var(--accent);
+  margin-bottom:28px;
+  animation:fadeUp .8s ease both;
+}
+.hero-badge svg{width:14px;height:14px;fill:var(--accent)}
 header h1{
-    font-size:3rem;
-    margin:0;
-    letter-spacing:1px;
-    text-shadow:
-        0 0 10px rgba(0,180,216,.6),
-        0 0 25px rgba(0,180,216,.4);
-    animation:tituloGlow 4s ease-in-out infinite;
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2.4rem,6vw,4.2rem);
+  font-weight:800;
+  line-height:1.1;
+  letter-spacing:-.02em;
+  animation:fadeUp .9s ease .1s both;
+  margin-bottom:20px;
 }
-
-@keyframes tituloGlow{
-    0%{
-        transform:translateY(0);
-        text-shadow:0 0 8px rgba(0,180,216,.4);
-    }
-    50%{
-        transform:translateY(-4px);
-        text-shadow:
-            0 0 18px rgba(0,180,216,.9),
-            0 0 35px rgba(0,119,182,.6);
-    }
-    100%{
-        transform:translateY(0);
-        text-shadow:0 0 8px rgba(0,180,216,.4);
-    }
+header h1 .accent{
+  color:var(--accent);
+  display:block;
 }
-
 header p{
-    font-size:1.2rem;
-    opacity:.9;
+  font-size:1.1rem;color:var(--text-muted);
+  max-width:520px;line-height:1.7;
+  animation:fadeUp .9s ease .2s both;
+  margin-bottom:40px;
 }
-
+.hero-btns{
+  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
+  animation:fadeUp .9s ease .3s both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.btn-primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#000;font-weight:700;
+  padding:14px 32px;border-radius:50px;
+  text-decoration:none;font-size:.95rem;
+  transition:.3s;border:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;
+  box-shadow:0 0 30px rgba(0,212,255,0.3);
+}
+.btn-primary:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 0 45px rgba(0,212,255,0.5);
+}
+.btn-secondary{
+  background:transparent;
+  color:var(--accent);font-weight:600;
+  padding:14px 32px;border-radius:50px;
+  text-decoration:none;font-size:.95rem;
+  border:1.5px solid var(--border);
+  transition:.3s;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-secondary:hover{
+  background:var(--accent-soft);
+  border-color:var(--accent);
+  transform:translateY(-3px);
+}
+.btn-claude{
+  background:linear-gradient(135deg,#b57bee,#7c3aed);
+  color:#fff;font-weight:700;
+  padding:14px 32px;border-radius:50px;
+  text-decoration:none;font-size:.95rem;
+  transition:.3s;border:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:10px;
+  box-shadow:0 0 30px rgba(124,58,237,0.4);
+}
+.btn-claude:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 0 50px rgba(124,58,237,0.6);
+}
+.btn-claude svg{width:20px;height:20px}
+.stats-row{
+  display:flex;gap:0;flex-wrap:wrap;
+  justify-content:center;
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  max-width:700px;margin:0 auto 80px;
+  animation:fadeUp .9s ease .4s both;
+  background:var(--blue-card);
+  position:relative;z-index:1;
+}
+.stat{
+  flex:1;min-width:140px;
+  padding:24px 20px;text-align:center;
+  border-right:1px solid var(--border);
+}
+.stat:last-child{border-right:none}
+.stat-num{
+  font-family:'Syne',sans-serif;
+  font-size:2rem;font-weight:800;
+  color:var(--accent);
+  display:block;
+  text-shadow:0 0 20px rgba(0,212,255,0.5);
+}
+.stat-label{font-size:.78rem;color:var(--text-muted);margin-top:4px}
 section{
-    max-width:1100px;
-    margin:auto;
-    padding:60px 20px;
-    animation:fadeUp 1s ease;
+  position:relative;z-index:1;
+  max-width:1100px;margin:0 auto;padding:70px 24px;
 }
-
-h2{
-    color:#4cc9f0;
-    margin-bottom:20px;
+.section-tag{
+  display:inline-block;
+  font-size:.75rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);
+  background:var(--accent-soft);
+  border:1px solid var(--border);
+  border-radius:20px;padding:4px 14px;
+  margin-bottom:14px;
 }
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
+section h2{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(1.6rem,3vw,2.2rem);
+  font-weight:800;color:var(--text);
+  margin-bottom:10px;
 }
-
+section .section-desc{
+  color:var(--text-muted);font-size:1rem;
+  max-width:560px;line-height:1.7;margin-bottom:40px;
+}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
 .card{
-    background:#132f4c;
-    border-radius:14px;
-    padding:25px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.3);
-    transition:.35s;
+  background:var(--blue-card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px;
+  transition:.35s;
+  position:relative;overflow:hidden;
 }
-
+.card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at top left,rgba(0,212,255,0.06),transparent 60%);
+  pointer-events:none;
+}
 .card:hover{
-    transform:translateY(-8px) scale(1.02);
-    box-shadow:0 15px 35px rgba(0,180,216,0.25);
+  transform:translateY(-6px);
+  border-color:rgba(0,212,255,0.4);
+  box-shadow:0 20px 50px rgba(0,0,0,0.4),0 0 30px rgba(0,212,255,0.08);
 }
-
-.btn{
-    background:linear-gradient(135deg,#00b4d8,#0077b6);
-    color:white;
-    padding:12px 22px;
-    border-radius:30px;
-    text-decoration:none;
-    display:inline-block;
-    margin-top:15px;
-    font-weight:600;
-    transition:.3s;
+.card-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--accent-soft);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:18px;
+  font-size:1.3rem;
 }
-
-.btn:hover{
-    transform:scale(1.07);
-    box-shadow:0 0 18px rgba(0,180,216,0.6);
+.card h3{font-size:1rem;font-weight:600;margin-bottom:8px;color:var(--text)}
+.card p{font-size:.88rem;color:var(--text-muted);line-height:1.65}
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.comp-item{
+  background:var(--blue-card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px 20px;
+  display:flex;gap:14px;align-items:flex-start;
+  transition:.3s;
 }
-
+.comp-item:hover{border-color:rgba(0,212,255,0.35);transform:translateX(4px)}
+.comp-num{
+  font-family:'Syne',sans-serif;
+  font-size:1.4rem;font-weight:800;
+  color:rgba(0,212,255,0.25);
+  line-height:1;min-width:28px;
+}
+.comp-name{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.comp-desc{font-size:.78rem;color:var(--text-muted);line-height:1.5}
 .dashboard{
-    background:#102a43;
-    border-radius:16px;
-    padding:30px;
-    box-shadow:
-        0 0 25px rgba(0,180,216,0.15),
-        inset 0 0 25px rgba(0,180,216,0.08);
-    position:relative;
-    overflow:hidden;
+  background:var(--blue-card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:36px;
+  position:relative;overflow:hidden;
 }
-
-.dashboard::before{
-    content:"";
-    position:absolute;
-    top:-100%;
-    left:0;
-    width:100%;
-    height:200%;
-    background:linear-gradient(
-        transparent,
-        rgba(0,180,216,0.15),
-        transparent
-    );
-    animation:scan 6s linear infinite;
+.dashboard::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  animation:scanLine 3s linear infinite;
 }
-
-@keyframes scan{
-    from{transform:translateY(0);}
-    to{transform:translateY(100%);}
-  }
-  .metric h3{
-    font-size:2.2rem;
-    color:#4cc9f0;
-    margin:10px 0;
-    text-shadow:0 0 12px rgba(76,201,240,.6);
-    animation:pulseMetric 3s ease-in-out infinite;
+@keyframes scanLine{from{top:0}to{top:100%}}
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px}
+.metric{
+  background:rgba(0,0,0,0.2);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:24px;text-align:center;
 }
-
-@keyframes pulseMetric{
-    0%,100%{
-        transform:scale(1);
-    }
-    50%{
-        transform:scale(1.08);
-    }
-  }
-
+.metric-label{font-size:.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.metric-value{
+  font-family:'Syne',sans-serif;
+  font-size:2.4rem;font-weight:800;
+  color:var(--accent);
+  text-shadow:0 0 20px rgba(0,212,255,0.5);
+  animation:pulseNum 3s ease-in-out infinite;
+}
+@keyframes pulseNum{0%,100%{opacity:1}50%{opacity:.75}}
+.metric-status{font-size:.8rem;color:var(--text-muted);margin-top:6px}
+.status-dot{
+  display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:#00ff88;
+  box-shadow:0 0 8px #00ff88;
+  margin-right:6px;
+  animation:blink 1.5s ease-in-out infinite;
+}
+.claude-section{
+  background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(181,123,238,0.05));
+  border:1px solid rgba(124,58,237,0.3);
+  border-radius:20px;
+  padding:50px 40px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.claude-section::before{
+  content:"";position:absolute;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,58,237,0.15),transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.claude-section h2{
+  font-family:'Syne',sans-serif;
+  font-size:2rem;font-weight:800;
+  color:#d4a8ff;margin-bottom:12px;
+}
+.claude-section p{
+  color:#b89fd4;font-size:1rem;
+  max-width:480px;margin:0 auto 30px;line-height:1.7;
+}
+.ods-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(0,119,182,0.15);
+  border:1px solid rgba(0,119,182,0.4);
+  border-radius:12px;padding:14px 22px;
+  margin-bottom:24px;
+}
+.ods-num{
+  font-family:'Syne',sans-serif;
+  font-size:2rem;font-weight:800;
+  color:#00b4d8;line-height:1;
+}
+.ods-text{text-align:left}
+.ods-text span{display:block;font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
+.ods-text strong{font-size:.9rem;color:var(--text)}
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid var(--border);
+  text-align:center;
+  padding:30px 24px;
+  color:var(--text-muted);font-size:.85rem;
+}
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),transparent);
+  max-width:1100px;margin:0 auto;
+}
 </style>
 </head>
-
 <body>
 
+<div class="bg-particles" id="particles"></div>
+
 <nav>
-<h2>Agua Inteligente</h2>
-<a href="#dashboard">Monitoreo</a>
+  <div class="nav-logo">
+    <span></span>
+    Agua Inteligente
+  </div>
+  <div class="nav-links">
+    <a href="#problema">Problema</a>
+    <a href="#solucion">Solución</a>
+    <a href="#componentes">Componentes</a>
+    <a href="#dashboard">Monitoreo</a>
+    <a href="#ia">IA</a>
+  </div>
 </nav>
 
 <header>
-<h1>Agua Inteligente Cali</h1>
-<p>Purificación automática con asistencia por voz e integración electrónica</p>
+  <div class="hero-glow"></div>
+  <div class="hero-badge">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+    Proyecto ODS 6 · Cali, 2026
+  </div>
+  <h1>
+    Agua Inteligente
+    <span class="accent">Cali</span>
+  </h1>
+  <p>Sistema Arduino que analiza la calidad del agua en tiempo real y solo la dispensa cuando es segura para consumo humano.</p>
+  <div class="hero-btns">
+    <a href="#dashboard" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Ver monitoreo
+    </a>
+    <a href="#componentes" class="btn-secondary">Conocer el proyecto</a>
+  </div>
 </header>
 
-<section>
-<h2>El Problema</h2>
-<div class="card">
-<p>
-Muchas comunidades enfrentan dificultades relacionadas con la calidad del agua y la falta de sistemas accesibles que combinen tecnología, educación ambiental y automatización.
-</p>
+<div style="position:relative;z-index:1;padding:0 24px;">
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">300</span><div class="stat-label">ppm umbral TDS</div></div>
+    <div class="stat"><span class="stat-num">6.5–7.5</span><div class="stat-label">rango pH óptimo</div></div>
+    <div class="stat"><span class="stat-num">11</span><div class="stat-label">componentes</div></div>
+    <div class="stat"><span class="stat-num">ODS 6</span><div class="stat-label">agua y saneamiento</div></div>
+  </div>
 </div>
+
+<div class="divider"></div>
+
+<section id="problema">
+  <div class="section-tag">El problema</div>
+  <h2>¿Por qué creamos esto?</h2>
+  <p class="section-desc">Millones de personas consumen agua sin saber si tiene niveles peligrosos de sólidos disueltos o si su pH está fuera del rango seguro.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">💧</div>
+      <h3>Sin control accesible</h3>
+      <p>Verificar la calidad del agua requiere laboratorios o equipos costosos, inaccesibles para muchas comunidades.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚠️</div>
+      <h3>Riesgo silencioso</h3>
+      <p>El agua puede verse limpia y tener concentraciones peligrosas de minerales o sustancias que no se perciben a simple vista.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌍</div>
+      <h3>ODS 6 incumplido</h3>
+      <p>El objetivo de desarrollo sostenible 6 busca agua limpia para todos, pero falta tecnología local que lo haga posible.</p>
+    </div>
+  </div>
 </section>
 
-<section>
-<h2>Nuestra Solución</h2>
-<div class="card">
-<p>
-Un sistema físico basado en Arduino que integra purificación, dispensado automático y asistencia por voz mediante inteligencia artificial, permitiendo interacción directa sin aplicaciones externas.
-</p>
-<a class="btn">Conoce más</a>
-</div>
+<div class="divider"></div>
+
+<section id="solucion">
+  <div class="ods-badge">
+    <div class="ods-num">6</div>
+    <div class="ods-text">
+      <span>Objetivo de Desarrollo Sostenible</span>
+      <strong>Agua limpia y saneamiento</strong>
+    </div>
+  </div>
+  <div class="section-tag">Nuestra solución</div>
+  <h2>Dispensador inteligente de agua</h2>
+  <p class="section-desc">Un sistema físico de bajo costo que mide TDS y pH en tiempo real, y solo activa la bomba cuando el agua cumple los parámetros de seguridad.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">🔬</div>
+      <h3>Medición en tiempo real</h3>
+      <p>El sensor TDS mide sólidos disueltos. El pH se estima matemáticamente a partir del TDS, sin electrodo adicional.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔒</div>
+      <h3>Doble seguridad</h3>
+      <p>La bomba solo funciona si el agua es apta <em>y</em> el usuario presiona el botón. Si falla algo, queda bloqueada por defecto.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔊</div>
+      <h3>Alertas por audio y LED</h3>
+      <p>Al acercarse, el sistema reproduce un mensaje de voz diferente según si el agua es apta o no. LEDs verde y naranja como indicadores.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Pantalla LCD</h3>
+      <p>Muestra en tiempo real "AGUA APTA / NO APTA", los ppm y el pH estimado, actualizándose en cada ciclo.</p>
+    </div>
+  </div>
 </section>
+
+<div class="divider"></div>
+
+<section id="componentes">
+  <div class="section-tag">Hardware</div>
+  <h2>Componentes del sistema</h2>
+  <p class="section-desc">11 componentes coordinados por un Arduino Nano.</p>
+  <div class="comp-grid">
+    <div class="comp-item"><div class="comp-num">01</div><div><div class="comp-name">Arduino Nano</div><div class="comp-desc">Cerebro del sistema. Procesa sensores y controla actuadores.</div></div></div>
+    <div class="comp-item"><div class="comp-num">02</div><div><div class="comp-name">Sensor TDS</div><div class="comp-desc">Pin A1. Mide sólidos disueltos en ppm. Umbral: 300 ppm.</div></div></div>
+    <div class="comp-item"><div class="comp-num">03</div><div><div class="comp-name">Sensor pH (A0)</div><div class="comp-desc">pH estimado matemáticamente desde el TDS para reducir costo.</div></div></div>
+    <div class="comp-item"><div class="comp-num">04</div><div><div class="comp-name">HC-SR04</div><div class="comp-desc">Ultrasonido. Detecta personas a menos de 25 cm.</div></div></div>
+    <div class="comp-item"><div class="comp-num">05</div><div><div class="comp-name">DFPlayer Mini</div><div class="comp-desc">Reproduce mp3 desde microSD. Pines 2 y 3.</div></div></div>
+    <div class="comp-item"><div class="comp-num">06</div><div><div class="comp-name">Parlante</div><div class="comp-desc">Emite el audio de bienvenida o alerta.</div></div></div>
+    <div class="comp-item"><div class="comp-num">07</div><div><div class="comp-name">LCD 16×2 I²C</div><div class="comp-desc">Muestra estado, ppm y pH. Solo usa pines A4 y A5.</div></div></div>
+    <div class="comp-item"><div class="comp-num">08</div><div><div class="comp-name">LED verde (D4)</div><div class="comp-desc">Indica agua apta. Parpadea al detectar persona.</div></div></div>
+    <div class="comp-item"><div class="comp-num">09</div><div><div class="comp-name">LED naranja (D5)</div><div class="comp-desc">Indica agua no apta. Parpadeo rápido de alerta.</div></div></div>
+    <div class="comp-item"><div class="comp-num">10</div><div><div class="comp-name">Módulo relé (D12)</div><div class="comp-desc">Controla la bomba. Lógica invertida: LOW = encendido.</div></div></div>
+    <div class="comp-item"><div class="comp-num">11</div><div><div class="comp-name">Bomba 12V</div><div class="comp-desc">Dispensa el agua cuando el sistema lo aprueba.</div></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
 
 <section id="dashboard">
-<h2>Panel de Monitoreo (Simulación)</h2>
+  <div class="section-tag">Monitoreo</div>
+  <h2>Panel en tiempo real (simulación)</h2>
+  <p class="section-desc">Valores representativos del sistema en funcionamiento normal.</p>
+  <div class="dashboard">
+    <div class="metric-grid">
+      <div class="metric">
+        <div class="metric-label">TDS del agua</div>
+        <div class="metric-value" id="tds-val">245</div>
+        <div class="metric-status">ppm · por debajo del umbral</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">pH estimado</div>
+        <div class="metric-value" id="ph-val">7.1</div>
+        <div class="metric-status">dentro del rango 6.5–7.5</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Estado del sistema</div>
+        <div class="metric-value" style="font-size:1.4rem;padding-top:8px">
+          <span class="status-dot"></span>ACTIVO
+        </div>
+        <div class="metric-status">agua apta para dispensar</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Presencia detectada</div>
+        <div class="metric-value" id="dist-val">--</div>
+        <div class="metric-status">cm · ultrasonido HC-SR04</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="dashboard">
-<div class="grid">
+<div class="divider"></div>
 
-<div class="metric">
-<p>Nivel de Agua</p>
-<h3>72%</h3>
-<div class="bar"><div class="fill"></div></div>
-</div>
-
-<div class="metric">
-<p>Pureza Detectada</p>
-<h3>98%</h3>
-</div>
-
-<div class="metric">
-<p>Estado del Sistema</p>
-<h3>Activo</h3>
-</div>
-</div>
-</div>
-
+<section id="ia">
+  <div class="claude-section">
+    <div class="section-tag" style="background:rgba(124,58,237,0.15);border-color:rgba(124,58,237,0.4);color:#c084fc">Inteligencia artificial</div>
+    <h2>¿Tienes preguntas sobre el proyecto?</h2>
+    <p>Habla directamente con Claude, una IA que ya conoce todo sobre este sistema: cómo funciona, los componentes, el código y la lógica de decisión.</p>
+    <a class="btn-claude" href="https://claude.ai/new?q=Eres%20un%20asistente%20experto%20en%20el%20siguiente%20proyecto%20escolar%20de%20electr%C3%B3nica%20y%20Arduino.%20Responde%20SOLO%20preguntas%20relacionadas%20con%20este%20proyecto.%0A%0APROYECTO%3A%20Dispensador%20inteligente%20de%20agua%20con%20control%20de%20calidad%0AODS%3A%206%20-%20Agua%20limpia%20y%20saneamiento%0A%0ADESCRIPCI%C3%93N%3A%20Sistema%20que%20mide%20TDS%20y%20pH%20estimado%20en%20tiempo%20real.%20Solo%20permite%20dispensar%20agua%20si%20TDS%20menor%20a%20300%20ppm%20y%20pH%20entre%206.5%20y%207.5.%20Si%20el%20agua%20no%20es%20apta%2C%20bloquea%20la%20bomba%20y%20alerta%20con%20LEDs%20y%20audio.%0A%0ACOMPONENTES%3A%20Arduino%20Nano%2C%20Sensor%20TDS%20(A1)%2C%20Sensor%20pH%20(A0%20estimado%20desde%20TDS)%2C%20HC-SR04%20ultrasonido%20(pines%209%20y%2010)%2C%20DFPlayer%20Mini%20(pines%202%20y%203)%2C%20Parlante%2C%20LCD%2016x2%20I2C%2C%20LED%20verde%20(pin%204)%2C%20LED%20naranja%20(pin%205)%2C%20Rel%C3%A9%20(pin%2012)%2C%20Bomba%2012V.%0A%0AL%C3%93GICA%3A%20TDS%20menor%20a%20300ppm%20%E2%86%92%20apto1%3D1.%20pH%20entre%206.5-7.5%20%E2%86%92%20apto2%3D1.%20apto1%20AND%20apto2%20%E2%86%92%20apto3%3D1%20(APTA).%20Bomba%20solo%20funciona%20si%20apto3%3D1%20y%20bot%C3%B3n%20presionado.%0A%0AHola!%20Estoy%20viendo%20el%20proyecto.%20%C2%BFPuedes%20explicarme%20c%C3%B3mo%20funciona%3F" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Preguntarle a Claude sobre el proyecto
+    </a>
+  </div>
 </section>
 
 <footer>
-<p>© 2026 Agua Inteligente Cali</p>
+  <p>© 2026 Agua Inteligente Cali &nbsp;·&nbsp; Proyecto escolar ODS 6 &nbsp;·&nbsp; Arduino Nano</p>
 </footer>
 
+<script>
+const container = document.getElementById('particles');
+for(let i=0;i<18;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  const size=Math.random()*120+40;
+  p.style.cssText=`
+    width:${size}px;height:${size}px;
+    left:${Math.random()*100}%;
+    animation-duration:${Math.random()*20+15}s;
+    animation-delay:${Math.random()*-20}s;
+    opacity:${Math.random()*0.15+0.03};
+  `;
+  container.appendChild(p);
+}
+
+function randomBetween(a,b){return(Math.random()*(b-a)+a).toFixed(typeof a==='number'&&String(a).includes('.')?1:0)}
+setInterval(()=>{
+  document.getElementById('tds-val').textContent=randomBetween(230,270);
+  document.getElementById('ph-val').textContent=randomBetween(6.8,7.3);
+  document.getElementById('dist-val').textContent=randomBetween(40,120);
+},2500);
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.style.animation='fadeUp .7s ease both';obs.unobserve(e.target)}
+  });
+},{threshold:.15});
+document.querySelectorAll('.card,.comp-item,.metric,.claude-section').forEach(el=>{
+  el.style.opacity='0';
+  obs.observe(el);
+});
+</script>
 </body>
 </html>
